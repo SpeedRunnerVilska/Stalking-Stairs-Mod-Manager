@@ -1,25 +1,88 @@
-# StalkingStairMods
+# 🪜 StalkingStairMods
 
-This repository contains all verified mods for The Stalking Stairs, developed by Jaden Williams, and curated for use with Stalking Mod Manager.
+<p align="center">
+  <img src="https://cdn.discordapp.com/attachments/1405258698472816860/1473073402842448023/image_2.png" width="700"/>
+</p>
 
-Stalking Mod Manager automatically installs custom mods into The Stalking Stairs and can be re-run at any time to update installed mods.
+> The official verified mod collection for **The Stalking Stairs**  
+> Developed by Jaden Williams  
+> Powered by Stalking Mod Manager  
 
-The manager uses the GitHub API to fetch the latest releases of supported mods, ensuring you always receive the most up-to-date versions available.
+---
 
-Mod Submissions
+## 🔥 What Is This?
 
-If you would like your mod to be added, please send a discord message: speedrunnervilska 
+**StalkingStairMods** is the centralized hub for all verified mods compatible with *The Stalking Stairs*.
 
-The GitHub repository link for your mod
+Every mod listed here is tested, structured, and formatted for seamless use with **Stalking Mod Manager**, meaning:
 
-Any required dependencies
+- ⚡ One-click installs  
+- 🔄 Automatic updates  
+- 🧩 Proper dependency handling  
+- 🛠 Clean integration  
 
-Submission guidelines may be updated in the future.
+No messy manual installs. No broken load orders. Just install and climb.
 
-To be eligible, please ensure that:
+---
 
-Your mod is built in the Stalking Mod Manager–compatible format using CustomModifier.ps1, or you provide a compiled DLL in your release
+## 🧠 How It Works
 
-All dependencies are clearly and correctly listed
+**Stalking Mod Manager** connects directly to the GitHub API to:
 
-Your mod is fully functional and stable
+- Fetch the latest mod releases  
+- Install supported versions automatically  
+- Update installed mods when new releases drop  
+- Re-run anytime to refresh your setup  
+
+You always receive the most up-to-date verified versions available.
+
+---
+
+## 🛠 Mod Submissions
+
+Want your mod added to the verified list?
+
+Send a Discord message to:
+
+**speedrunnervilska**
+
+Include:
+
+- 🔗 Your GitHub repository link  
+- 📦 Any required dependencies  
+- 🧾 Confirmation your mod follows the required format  
+
+> Submission guidelines may be updated as the ecosystem evolves.
+
+---
+
+## ✅ Eligibility Requirements
+
+To be accepted into **StalkingStairMods**, your mod must:
+
+- Be built using the Stalking Mod Manager–compatible format:
+  - Use `CustomModifier.ps1`  
+  **OR**
+  - Provide a compiled `.dll` file in your release
+- Clearly list all required dependencies
+- Be fully functional and stable
+- Not be an experimental or broken build
+
+Quality and stability are prioritized.
+
+---
+
+## 🚀 Purpose
+
+The goal of this repository is to maintain a clean, stable, and unified mod ecosystem for *The Stalking Stairs*.
+
+By centralizing verified mods, we ensure:
+
+- Compatibility  
+- Stability  
+- Structured releases  
+- A better experience for all players  
+
+---
+
+**Climb smarter. Mod better.**
