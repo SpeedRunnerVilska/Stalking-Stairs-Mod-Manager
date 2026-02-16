@@ -17,25 +17,14 @@
       "downloadUrl": "https://github.com/SpeedRunnerVilska/ExampleMod/releases/download/Release/ExampleButton.dll",
       "description": "Example mod description",
       "enabled": true
-      "group": "Example"
     },
     {
-      "name": "ExampleMod",
+      "name": "ExampleMod2",
       "author": "SpeedRunnerVilska",
       "version": "1.0.0",
-      "downloadUrl": "https://github.com/SpeedRunnerVilska/ExampleMod/releases/download/Release/ExampleButto8n.dll",
+      "downloadUrl": "https://github.com/SpeedRunnerVilska/ExampleMod2/releases/download/Release/ExampleMod2.dll",
       "description": "Example mod description",
       "enabled": true
-      "group": "Example"
-    },
-    {
-      "name": "ExampleMod",
-      "author": "SpeedRunnerVilska",
-      "version": "1.0.0",
-      "downloadUrl": "https://github.com/SpeedRunnerVilska/ExampleMod/releases/download/Release/Example6Button.dll",
-      "description": "Example mod description",
-      "enabled": true
-      "group": "Example"
-    },
+    }
   ]
 }
