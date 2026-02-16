@@ -5,7 +5,8 @@
 </p>
 
 > The official verified mod collection for **The Stalking Stairs**  
-> Developed by Jaden Williams  
+> Developed by Vilska
+> Game developed by Jaden Williams 
 > Powered by Stalking Mod Manager  
 
 ---
