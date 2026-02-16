@@ -1,8 +1,5 @@
 C:\Users\Gamin\source\repos\StalkingStairsModManager\StalkingStairsModManager\bin\Debug\net8.0-windows\StalkingStairsModManager.exe
-C:\Users\Gamin\source\repos\StalkingStairsModManager\StalkingStairsModManager\bin\Debug\net8.0-windows\StalkingStairsModManager.deps.json
-C:\Users\Gamin\source\repos\StalkingStairsModManager\StalkingStairsModManager\bin\Debug\net8.0-windows\StalkingStairsModManager.runtimeconfig.json
 C:\Users\Gamin\source\repos\StalkingStairsModManager\StalkingStairsModManager\bin\Debug\net8.0-windows\StalkingStairsModManager.dll
-C:\Users\Gamin\source\repos\StalkingStairsModManager\StalkingStairsModManager\bin\Debug\net8.0-windows\StalkingStairsModManager.pdb
 C:\Users\Gamin\source\repos\StalkingStairsModManager\StalkingStairsModManager\obj\Debug\net8.0-windows\LocateGameWindow.baml
 C:\Users\Gamin\source\repos\StalkingStairsModManager\StalkingStairsModManager\obj\Debug\net8.0-windows\MainWindow.baml
 C:\Users\Gamin\source\repos\StalkingStairsModManager\StalkingStairsModManager\obj\Debug\net8.0-windows\LocateGameWindow.g.cs
@@ -17,5 +14,8 @@ C:\Users\Gamin\source\repos\StalkingStairsModManager\StalkingStairsModManager\ob
 C:\Users\Gamin\source\repos\StalkingStairsModManager\StalkingStairsModManager\obj\Debug\net8.0-windows\StalkingStairsModManager.dll
 C:\Users\Gamin\source\repos\StalkingStairsModManager\StalkingStairsModManager\obj\Debug\net8.0-windows\refint\StalkingStairsModManager.dll
 C:\Users\Gamin\source\repos\StalkingStairsModManager\StalkingStairsModManager\obj\Debug\net8.0-windows\StalkingStairsModManager.pdb
+C:\Users\Gamin\source\repos\StalkingStairsModManager\StalkingStairsModManager\bin\Debug\net8.0-windows\StalkingStairsModManager.deps.json
+C:\Users\Gamin\source\repos\StalkingStairsModManager\StalkingStairsModManager\bin\Debug\net8.0-windows\StalkingStairsModManager.runtimeconfig.json
+C:\Users\Gamin\source\repos\StalkingStairsModManager\StalkingStairsModManager\bin\Debug\net8.0-windows\StalkingStairsModManager.pdb
 C:\Users\Gamin\source\repos\StalkingStairsModManager\StalkingStairsModManager\obj\Debug\net8.0-windows\StalkingStairsModManager.genruntimeconfig.cache
 C:\Users\Gamin\source\repos\StalkingStairsModManager\StalkingStairsModManager\obj\Debug\net8.0-windows\ref\StalkingStairsModManager.dll

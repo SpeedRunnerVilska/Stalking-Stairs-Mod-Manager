@@ -11,7 +11,7 @@ namespace StalkingStairsModManager.Services
 {
     public class GitHubModService
     {
-        // Updated to the raw URL for the new repo location
+        // raw URL updated earlier
         private const string ModsUrl =
             "https://raw.githubusercontent.com/SpeedRunnerVilska/Stalking-Stairs-Mod-Manager/main/mods.json";
 
@@ -44,16 +44,6 @@ namespace StalkingStairsModManager.Services
                 throw new InvalidOperationException($"Failed to download mods manifest from {ModsUrl}");
             }
 
-            // Quick heuristic: if it looks truncated (no closing ']' or '}'), try one more download
-            if (!json.TrimEnd().EndsWith("]") && !json.TrimEnd().EndsWith("}"))
-            {
-                try
-                {
-                    json = await client.GetStringAsync(ModsUrl);
-                }
-                catch { /* ignore, will log below */ }
-            }
-
             // Save raw response for troubleshooting
             string rawLogPath = SaveRawManifestForDebug(json);
 
@@ -64,7 +54,7 @@ namespace StalkingStairsModManager.Services
                 using var root = JsonDocument.Parse(json);
                 if (root.RootElement.ValueKind == JsonValueKind.Array)
                 {
-                    // good: json is the array already
+                    // json is the array already
                 }
                 else if (root.RootElement.ValueKind == JsonValueKind.Object && root.RootElement.TryGetProperty("mods", out var modsElement) && modsElement.ValueKind == JsonValueKind.Array)
                 {
@@ -91,6 +81,20 @@ namespace StalkingStairsModManager.Services
                 throw new InvalidDataException($"Failed to deserialize mods manifest. Raw saved to: {rawLogPath}", ex);
             }
 
+            // If entries use gitPath instead of downloadUrl, populate downloadUrl so resolution runs
+            foreach (var m in mods)
+            {
+                if (string.IsNullOrWhiteSpace(m.downloadUrl) && !string.IsNullOrWhiteSpace(m.gitPath))
+                {
+                    // normalize possible "owner/repo" into a GitHub URL
+                    string gp = m.gitPath.Trim();
+                    if (!gp.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+                        m.downloadUrl = $"https://github.com/{gp}";
+                    else
+                        m.downloadUrl = gp;
+                }
+            }
+
             // Resolve GitHub assets where possible (non-fatal)
             using HttpClient githubClient = new();
             githubClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("StalkingStairsModManager", "1.0"));
@@ -100,6 +104,7 @@ namespace StalkingStairsModManager.Services
                 {
                     if (!string.IsNullOrWhiteSpace(mod.downloadUrl) && IsGitHubUrl(mod.downloadUrl))
                     {
+                        // Try to resolve latest release asset (or asset by releaseId if present)
                         await TryResolveLatestGitHubReleaseAsync(mod, githubClient);
                     }
                 }
@@ -135,27 +140,9 @@ namespace StalkingStairsModManager.Services
             return mods;
         }
 
-        private static string SaveRawManifestForDebug(string json)
-        {
-            try
-            {
-                string baseDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "StalkingStairsModManager", "logs");
-                Directory.CreateDirectory(baseDir);
-                string fileName = $"manifest_{DateTime.UtcNow:yyyyMMddHHmmss}.json";
-                string path = Path.Combine(baseDir, fileName);
-                File.WriteAllText(path, json ?? string.Empty);
-                return path;
-            }
-            catch
-            {
-                return "Unable to write raw manifest to log folder";
-            }
-        }
-
         private static bool IsGitHubUrl(string url)
         {
-            if (!Uri.TryCreate(url, UriKind.Absolute, out var uri))
-                return false;
+            if (!Uri.TryCreate(url, UriKind.Absolute, out var uri)) return false;
             return uri.Host.IndexOf("github.com", StringComparison.OrdinalIgnoreCase) >= 0;
         }
 
@@ -164,6 +151,7 @@ namespace StalkingStairsModManager.Services
             if (!Uri.TryCreate(mod.downloadUrl, UriKind.Absolute, out var uri))
                 return;
 
+            // Attempt to extract owner/repo from path
             var segments = uri.AbsolutePath.Split('/', StringSplitOptions.RemoveEmptyEntries);
             if (segments.Length < 2)
                 return;
@@ -171,11 +159,18 @@ namespace StalkingStairsModManager.Services
             var owner = segments[0];
             var repo = segments[1];
 
-            var apiUrl = $"https://api.github.com/repos/{owner}/{repo}/releases/latest";
+            string apiUrl;
+            if (mod.releaseId.HasValue && mod.releaseId.Value > 0)
+            {
+                apiUrl = $"https://api.github.com/repos/{owner}/{repo}/releases/{mod.releaseId.Value}";
+            }
+            else
+            {
+                apiUrl = $"https://api.github.com/repos/{owner}/{repo}/releases/latest";
+            }
 
             using var resp = await client.GetAsync(apiUrl);
-            if (!resp.IsSuccessStatusCode)
-                return;
+            if (!resp.IsSuccessStatusCode) return;
 
             using var stream = await resp.Content.ReadAsStreamAsync();
             using var doc = await JsonDocument.ParseAsync(stream);
@@ -210,6 +205,23 @@ namespace StalkingStairsModManager.Services
                 {
                     mod.downloadUrl = chosenUrl;
                 }
+            }
+        }
+
+        private static string SaveRawManifestForDebug(string json)
+        {
+            try
+            {
+                string baseDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "StalkingStairsModManager", "logs");
+                Directory.CreateDirectory(baseDir);
+                string fileName = $"manifest_{DateTime.UtcNow:yyyyMMddHHmmss}.json";
+                string path = Path.Combine(baseDir, fileName);
+                File.WriteAllText(path, json ?? string.Empty);
+                return path;
+            }
+            catch
+            {
+                return "Unable to write raw manifest to log folder";
             }
         }
     }

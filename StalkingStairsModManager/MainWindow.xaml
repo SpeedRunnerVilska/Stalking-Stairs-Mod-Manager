@@ -4,10 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        Icon="logo.ico"
         Title="Stalking Stairs Mod Manager"
         Height="560" Width="980"
-        Background="#070607"
+        Background="#060405"
         WindowStartupLocation="CenterScreen">
+        
 
     <Grid Margin="12">
         <Grid.ColumnDefinitions>
@@ -16,19 +18,23 @@
         </Grid.ColumnDefinitions>
 
         <!-- Left panel: title + controls -->
-        <Border Grid.Column="0" Margin="0,0,12,0" Padding="16" CornerRadius="8" Background="#0E0A0A" BorderBrush="#3A0000" BorderThickness="2">
+        <Border Grid.Column="0" Margin="0,0,12,0" Padding="16" CornerRadius="8" Background="#12090A" BorderBrush="#550000" BorderThickness="2">
             <StackPanel>
                 <TextBlock Text="STALKING STAIRS" Foreground="#FF3B3B" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
-                <TextBlock Text="MOD MANAGER" Foreground="#B84B4B" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,2,0,12"/>
+                <TextBlock Text="MOD MANAGER" Foreground="#C85A5A" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,2,0,12"/>
 
-                <TextBlock Text="Game Path" Foreground="#CFCFCF" FontWeight="Bold" Margin="0,4"/>
-                <TextBlock x:Name="PathStatus" Text="Detecting..." TextWrapping="Wrap" Foreground="#999" Margin="0,2,0,8"/>
+                <Separator Margin="0,4" Background="#2E0000" Height="1"/>
+
+                <TextBlock Text="Game Path" Foreground="#CFCFCF" FontWeight="Bold" Margin="0,8,0,2"/>
+                <TextBlock x:Name="PathStatus" Text="Detecting..." TextWrapping="Wrap" Foreground="#9A9A9A" Margin="0,2,0,8"/>
+
+                
 
                 <StackPanel Orientation="Vertical" Margin="0,8,0,0">
-                    <Button Content="Install / Update BepInEx" Click="InstallBepInEx_Click" Margin="0,6,0,0" Height="36" Background="#220000" Foreground="White"/>
-                    <Button Content="Refresh Mods" Click="RefreshMods_Click" Margin="0,6,0,0" Height="36" Background="#220000" Foreground="White"/>
-                    <Button Content="Open Mods Folder" Click="OpenMods_Click" Margin="0,6,0,0" Height="36" Background="#220000" Foreground="White"/>
-                    <Button Content="Uninstall Mods" Click="UninstallMods_Click" Margin="0,6,0,0" Height="36" Background="#220000" Foreground="White"/>
+                    <Button Content="Install / Update" Click="InstallUpdate_Click" Margin="0,6,0,0" Height="36" Background="#3A0E0E" Foreground="White"/>
+                    <Button Content="Refresh Mods" Click="RefreshMods_Click" Margin="0,6,0,0" Height="36" Background="#3A0E0E" Foreground="White"/>
+                    <Button Content="Open Mods Folder" Click="OpenMods_Click" Margin="0,6,0,0" Height="36" Background="#3A0E0E" Foreground="White"/>
+                    <Button Content="Uninstall Mods" Click="UninstallMods_Click" Margin="0,6,0,0" Height="36" Background="#3A0E0E" Foreground="White"/>
                 </StackPanel>
 
                 <TextBlock Text="Tip: BepInEx is always enabled and forced to the requested version." Foreground="#888" FontSize="11" Margin="0,12,0,0" TextWrapping="Wrap"/>
@@ -36,27 +42,26 @@
         </Border>
 
         <!-- Right panel: mods grid -->
-        <Border Grid.Column="1" Padding="10" Background="#09080A" BorderBrush="#2E0000" BorderThickness="2" CornerRadius="8">
+        <Border Grid.Column="1" Padding="10" Background="#080507" BorderBrush="#3A0000" BorderThickness="2" CornerRadius="8">
             <DockPanel LastChildFill="False">
                 <TextBlock DockPanel.Dock="Top" Text="Available Mods" FontSize="16" Foreground="#FF5A5A" FontWeight="Bold" Margin="4"/>
+                <Rectangle Height="2" Fill="#3A0000" Margin="4,0,4,8" DockPanel.Dock="Top"/>
 
-                <!-- DataGrid docked to Top and sized to its content (fixed column widths).
-                     Entire grid set ReadOnly=true so text columns are not editable; Enabled column is explicitly editable. -->
                 <DataGrid x:Name="ModsGrid"
                           DockPanel.Dock="Top"
-                          Background="#111"
+                          Background="#0F0E0F"
                           Foreground="White"
                           AutoGenerateColumns="False"
                           HeadersVisibility="Column"
-                          BorderBrush="#440000"
-                          RowBackground="#0C0C0C"
-                          AlternatingRowBackground="#101010"
+                          BorderBrush="#2B0000"
+                          RowBackground="#0D0D0D"
+                          AlternatingRowBackground="#121212"
                           CanUserResizeColumns="False"
                           CanUserResizeRows="False"
                           CanUserReorderColumns="False"
                           CanUserAddRows="False"
-                          IsReadOnly="True"
-                          RowHeight="28"
+                          IsReadOnly="False"
+                          RowHeight="30"
                           HorizontalScrollBarVisibility="Auto"
                           VerticalScrollBarVisibility="Auto"
                           VerticalAlignment="Top"
@@ -64,42 +69,41 @@
 
                     <DataGrid.ColumnHeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="Background" Value="#220000"/>
-                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Background" Value="#300606"/>
+                            <Setter Property="Foreground" Value="#FFDCDC"/>
                             <Setter Property="FontWeight" Value="Bold"/>
-                            <Setter Property="Padding" Value="6,4"/>
+                            <Setter Property="Padding" Value="6,6"/>
                         </Style>
                     </DataGrid.ColumnHeaderStyle>
 
                     <DataGrid.Columns>
-                        <!-- Enabled remains editable -->
-                        <DataGridCheckBoxColumn Header="Enabled"
-                                                Binding="{Binding enabled}"
-                                                Width="60"
-                                                CanUserResize="False"
-                                                IsReadOnly="False"/>
+                        <DataGridTemplateColumn Header="Enabled" Width="60" CanUserResize="False">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding enabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              IsEnabled="{Binding isToggleable}"
+                                              HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
 
-                        <!-- Mod column shows "Name - Version" via DisplayName and is read-only -->
                         <DataGridTextColumn Header="Mod"
                                             Binding="{Binding DisplayName}"
-                                            Width="320"
+                                            Width="360"
                                             CanUserResize="False"
                                             IsReadOnly="True"/>
 
-                        <!-- Author column read-only -->
                         <DataGridTextColumn Header="Author"
                                             Binding="{Binding author}"
-                                            Width="160"
+                                            Width="220"
                                             CanUserResize="False"
                                             IsReadOnly="True"/>
-
-                        <!-- Description and Version removed; space minimized by fixed widths -->
                     </DataGrid.Columns>
                 </DataGrid>
 
-                <StatusBar DockPanel.Dock="Bottom" Background="#080606" BorderThickness="0" Padding="6">
+                <StatusBar DockPanel.Dock="Bottom" Background="#0B0909" BorderThickness="0" Padding="6">
                     <StatusBarItem>
-                        <TextBlock x:Name="StatusText" Text="Ready" Foreground="#DDD"/>
+                        <TextBlock x:Name="StatusText" Text="Ready" Foreground="#E6E6E6"/>
                     </StatusBarItem>
                 </StatusBar>
             </DockPanel>
