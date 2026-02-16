@@ -1,7 +1,7 @@
-# 🪜 StalkingStairMods
+# StalkingStairMods
 
 <p align="center">
-  <img src="https://cdn.discordapp.com/attachments/1405258698472816860/1473073402842448023/image_2.png" width="700"/>
+  <img src="[https://cdn.discordapp.com/attachments/1405258698472816860/1473073402842448023/image_2.png](https://cdn.discordapp.com/attachments/1428022810932154368/1473073973569912863/image_2.png?ex=6994e28b&is=6993910b&hm=ee59913f727b9ebc9321c4596f469a33b08e891629ee4ffa2f4bd8970ade7622&)" width="700"/>
 </p>
 
 > The official verified mod collection for **The Stalking Stairs**  
@@ -10,22 +10,22 @@
 
 ---
 
-## 🔥 What Is This?
+## What Is This?
 
 **StalkingStairMods** is the centralized hub for all verified mods compatible with *The Stalking Stairs*.
 
 Every mod listed here is tested, structured, and formatted for seamless use with **Stalking Mod Manager**, meaning:
 
-- ⚡ One-click installs  
-- 🔄 Automatic updates  
-- 🧩 Proper dependency handling  
-- 🛠 Clean integration  
+- One-click installs  
+- Automatic updates  
+- Proper dependency handling  
+- Clean integration  
 
 No messy manual installs. No broken load orders. Just install and climb.
 
 ---
 
-## 🧠 How It Works
+## How It Works
 
 **Stalking Mod Manager** connects directly to the GitHub API to:
 
@@ -38,7 +38,7 @@ You always receive the most up-to-date verified versions available.
 
 ---
 
-## 🛠 Mod Submissions
+## Mod Submissions
 
 Want your mod added to the verified list?
 
@@ -48,15 +48,15 @@ Send a Discord message to:
 
 Include:
 
-- 🔗 Your GitHub repository link  
-- 📦 Any required dependencies  
-- 🧾 Confirmation your mod follows the required format  
+- Your GitHub repository link  
+- Any required dependencies  
+- Confirmation your mod follows the required format  
 
 > Submission guidelines may be updated as the ecosystem evolves.
 
 ---
 
-## ✅ Eligibility Requirements
+## Eligibility Requirements
 
 To be accepted into **StalkingStairMods**, your mod must:
 
