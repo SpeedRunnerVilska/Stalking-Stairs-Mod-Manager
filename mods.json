@@ -12,9 +12,9 @@
     },
     {
       "name": "ExampleMod",
-      "author": "ModAuthor",
+      "author": "SpeedRunnerVilska",
       "version": "1.0.0",
-      "downloadUrl": "https://example.com/examplemod.zip",
+      "downloadUrl": "https://github.com/SpeedRunnerVilska/ExampleMod/releases/download/Release/ExampleButton.dll",
       "description": "Example mod description",
       "enabled": true
     }
