@@ -1,10 +1,18 @@
-{
-   "mods" : [
-      {
-         "name" : "BepInEx",
-         "tag" : "",
-         "gitPath" : "BepInEx/BepInEx",
-         "releaseId" : 147192581,
-         "author" : "BepInEx Team",
-         "group" : "Core"
-      },
+[
+  {
+    "name": "BepInEx",
+    "author": "BepInEx Team",
+    "version": "5.4.23.2",
+    "downloadUrl": "https://github.com/BepInEx/BepInEx/releases/download/v5.4.23.2/BepInEx_win_x64_5.4.23.2.zip",
+    "description": "BepInEx runtime",
+    "enabled": true
+  },
+  {
+    "name": "ExampleMod",
+    "author": "ModAuthor",
+    "version": "1.0.0",
+    "downloadUrl": "https://example.com/examplemod.zip",
+    "description": "Example mod description",
+    "enabled": true
+  }
+]
