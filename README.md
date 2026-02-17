@@ -45,7 +45,7 @@ Want your mod added to the verified list?
 
 Send a Discord message to:
 
-**speedrunnervilska**
+**vilskaspeedrunner**
 
 Include:
 
